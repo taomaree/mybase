@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:18.04
 
 RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody \
     && mkdir -p ~/.pip && echo [global] > ~/.pip/pip.conf && echo "index-url = https://pypi.mirrors.ustc.edu.cn/simple" >> ~/.pip/pip.conf \
