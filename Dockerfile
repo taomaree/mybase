@@ -5,7 +5,7 @@ ENV TZ=Asia/Shanghai DEBIAN_FRONTEND=noninteractive
 RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody \
     && echo $TZ > /etc/timezone \
     && mkdir -p ~/.pip && echo [global] > ~/.pip/pip.conf && echo "index-url = https://pypi.mirrors.ustc.edu.cn/simple" >> ~/.pip/pip.conf \
-    && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl wget \
+    && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl wget apt-transport-https \
     && sed -i 's@ .*.ubuntu.com@ https://mirrors.ustc.edu.cn@g' /etc/apt/sources.list \
     && echo registry=http://npmreg.mirrors.ustc.edu.cn/ > ~/.npmrc \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common ca-certificates \
