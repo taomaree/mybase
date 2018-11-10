@@ -8,8 +8,10 @@ RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common ca-certificates \
      curl wget net-tools jq iputils-ping iputils-arping socat netcat telnet dnsutils bind9utils traceroute mtr vim \
      ttf-dejavu runit cron logrotate rsyslog-kafka dumb-init gosu  \
-    && mkdir -p /etc/service/cron /etc/service/syslog /etc/service/logrotate \
+    && sed -i 's/^module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf \
+    && mkdir -p /etc/service/cron /etc/service/syslog \
     && bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/cron -f" > /etc/service/cron/run' \
     && bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/rsyslogd -n" > /etc/service/syslog/run' \
+    && chmod 755 /etc/service/cron/run /etc/service/syslog/run
 
 CMD ["runsvdir", "/etc/service"]
