@@ -10,7 +10,7 @@ RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody \
     && echo registry=http://npmreg.mirrors.ustc.edu.cn/ > ~/.npmrc \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common ca-certificates \
      curl wget net-tools jq iputils-ping iputils-arping socat netcat telnet dnsutils bind9utils traceroute mtr tzdata vim \
-     ttf-dejavu runit cron logrotate gosu rsyslog-kafka dumb-init   \
+     ttf-dejavu runit cron logrotate gosu rsyslog-kafka  \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && sed -i 's/^module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf \
     && mkdir -p /etc/service/cron /etc/service/syslog \
