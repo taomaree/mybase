@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:16.04
 
 ENV TZ=Asia/Shanghai DEBIAN_FRONTEND=noninteractive
 
